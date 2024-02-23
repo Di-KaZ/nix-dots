@@ -35,8 +35,8 @@
     open = false;
     nvidiaSettings = true;
     prime = {
-      intelBusId = "PCI:1:0:0";
-      nvidiaBusId = "PCI:0:2:0";
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
       offload = {
         enable = true;
         enableOffloadCmd = true;
@@ -57,11 +57,25 @@
     #jack.enable = true;
   };
 
+  # Enable login manager
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.defaultSession = "wayfire";
+  services.xserver.displayManager.session = [
+    {
+      manage = "desktop";
+      name = "wayfire";
+      start = ''
+              ${pkgs.wayfire}/bin/wayfire &
+        	  waitPID=$!
+      '';
+    }
+  ];
+
   # Enable wayfire ?
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
-      wcm
       wayfire-plugins-extra
     ];
   };

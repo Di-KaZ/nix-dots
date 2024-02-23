@@ -21,7 +21,6 @@
     };
   };
 
-
   home.packages = with pkgs; [
     firefox
     wofi
@@ -34,8 +33,9 @@
     gzip
     wl-clipboard
     nixd
+    swww
+    pfetch
   ];
-
 
   programs.wezterm = {
     enable = true;
@@ -64,8 +64,7 @@
     enable = true;
     shellAliases = {
       n = "nvim";
-      zbeubzbeub = "ls -la";
-      home-switch = "home-manager switch --flake .";
+      home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";
     };
   };
 
