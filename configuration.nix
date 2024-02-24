@@ -47,7 +47,10 @@
   # Enable Adb
   programs.adb.enable = true;
 
-  security.rtkit.enable = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -60,17 +63,6 @@
   # Enable login manager
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "wayfire";
-  services.xserver.displayManager.session = [
-    {
-      manage = "desktop";
-      name = "wayfire";
-      start = ''
-              ${pkgs.wayfire}/bin/wayfire &
-        	  waitPID=$!
-      '';
-    }
-  ];
 
   # Enable wayfire ?
   programs.wayfire = {
@@ -107,7 +99,7 @@
   users.users.getmoussed = {
     isNormalUser = true;
     description = "getmoussed";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "plugdev" ];
     packages = with pkgs; [ ];
   };
 

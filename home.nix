@@ -35,7 +35,15 @@
     nixd
     swww
     pfetch
+    steam
+    vscode
   ];
+
+  imports = [ inputs.ags.homeManagerModules.default ];
+  programs.ags = {
+    enable = true;
+    package = inputs.ags.packages.${pkgs.system}.default;
+  };
 
   programs.wezterm = {
     enable = true;
@@ -46,6 +54,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim".source = ./pkgs/nvim;
+    ".config/ags".source = ./pkgs/ags;
     ".config/wayfire.ini".source = ./pkgs/wayfire/wayfire.ini;
   };
 
@@ -57,6 +66,21 @@
     enable = true;
     userName = "GET MOUSSED";
     userEmail = "moussa.fof.pro@gmail.com";
+    includes =
+      [
+        {
+          condition = "gitdir:${config.home.homeDirectory}/come_on/";
+          contents = {
+            user = {
+              email = "m.fofana@come-on.co";
+              name = "Moussa Fofana";
+            };
+            core = {
+              sshCommand = "ssh -i ${config.home.homeDirectory}/.ssh/come_on";
+            };
+          };
+        }
+      ];
   };
 
 
@@ -81,3 +105,4 @@
 
   programs.home-manager.enable = true;
 }
+
