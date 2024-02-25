@@ -44,8 +44,10 @@
     gvfs
     gjs
     sassc
-    nix-your-shell
-    (import ./dev_envs/dev-env.nix { inherit pkgs home; })
+    (import ./dev_envs/dev-env.nix {
+      inherit pkgs;
+      homeDirectory = config.home.homeDirectory;
+    })
   ];
 
   imports = [ inputs.ags.homeManagerModules.default ];
