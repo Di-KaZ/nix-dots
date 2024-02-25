@@ -8,9 +8,12 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # gtk.enable = true;
-  #  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  # gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  gtk.enable = true;
+  gtk.cursorTheme.package = pkgs.bibata-cursors;
+  gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  gtk.iconTheme.package = pkgs.papirus-icon-theme;
+  gtk.iconTheme.name = "Papirus";
+
 
   services = {
     gammastep = {
@@ -37,6 +40,12 @@
     pfetch
     steam
     vscode
+    bun
+    gvfs
+    gjs
+    sassc
+    nix-your-shell
+    (import ./dev_envs/dev-env.nix { inherit pkgs home; })
   ];
 
   imports = [ inputs.ags.homeManagerModules.default ];
@@ -86,6 +95,12 @@
 
   programs.zsh = {
     enable = true;
+    initExtra = ''
+      if command -v nix-your-shell > /dev/null; then
+        nix-your-shell zsh | source /dev/stdin
+      fi
+    '';
+
     shellAliases = {
       n = "nvim";
       home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";

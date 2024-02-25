@@ -47,10 +47,10 @@
   # Enable Adb
   programs.adb.enable = true;
 
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  # Sound
+  programs.dconf.enable = true;
 
+  # Sound
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -64,6 +64,8 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
 
+  services.upower.enable = true;
+
   # Enable wayfire ?
   programs.wayfire = {
     enable = true;
@@ -75,7 +77,6 @@
   fonts.packages = with pkgs; [
     monaspace
   ];
-
 
   networking.networkmanager.enable = true;
 

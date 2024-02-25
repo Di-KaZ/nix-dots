@@ -4,7 +4,7 @@ import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js'
 
 const src_folder = App.configDir + '/ts/';
 
-const outdir = App.configDir + '/build/';
+const outdir = '/home/getmoussed/.tmp/ags/';
 
 const paths = (await execAsync(['find', src_folder, '-type', 'f'])).split('\n');
 
@@ -19,6 +19,6 @@ await execAsync([
   '--external', '*',
 ]).catch(e => console.error(e));
 
-const main = await import(`file://${outdir}/ts/main.js`)
+const main = await import(`file://${outdir}/main.js`)
 
 export default main.default

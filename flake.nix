@@ -9,7 +9,7 @@
     android-nixpkgs.url = "github:tadfisher/android-nixpkgs/stable";
     android-nixpkgs.inputs.nixpkgs.follows = "nixpkgs";
     wezterm.url = "github:wez/wezterm?dir=nix";
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/v1.7.7";
   };
 
   outputs = { self, nixpkgs, home-manager, android-nixpkgs, ... } @inputs:
