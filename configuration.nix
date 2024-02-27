@@ -10,15 +10,21 @@
       ./hardware-configuration.nix
     ];
 
+  #boot.loader.grub.configurationLimit = 5;
+  #nix.gc.automatic = true;
+
   # Flake activation
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.userControlled.enable = true;
+  #networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
 
   # NVIDIA
   hardware.opengl = {
@@ -32,17 +38,20 @@
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    open = false;
+    open = true;
     nvidiaSettings = true;
     prime = {
+      sync.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
+      # offload = {
+      # enable = true;
+      # enableOffloadCmd = true;
+      # };
     };
   };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable Adb
   programs.adb.enable = true;
@@ -78,7 +87,6 @@
     monaspace
   ];
 
-  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Paris";
 

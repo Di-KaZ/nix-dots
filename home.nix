@@ -1,6 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, nix-colors, ... }:
 
 {
+  # colorScheme = nix-colors.colorSchemes.kanagawa;
   nixpkgs.config.allowUnfree = true;
 
   home.username = "getmoussed";
@@ -44,13 +45,25 @@
     gvfs
     gjs
     sassc
+    yazi
+    nodejs_18
+    networkmanagerapplet
     (import ./dev_envs/dev-env.nix {
       inherit pkgs;
       homeDirectory = config.home.homeDirectory;
     })
   ];
 
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [ inputs.ags.homeManagerModules.default ./pkgs/wayfire/module.nix ];
+
+  test = "HAHA";
+
+  programs.atuin = {
+    enable = true;
+    package = inputs.atuin.packages.${pkgs.system}.default;
+    enableZshIntegration = true;
+  };
+
   programs.ags = {
     enable = true;
     package = inputs.ags.packages.${pkgs.system}.default;
@@ -61,12 +74,10 @@
     package = inputs.wezterm.packages.${pkgs.system}.default;
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    ".config/nvim".source = ./pkgs/nvim;
-    ".config/ags".source = ./pkgs/ags;
-    ".config/wayfire.ini".source = ./pkgs/wayfire/wayfire.ini;
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/pkgs/nvim";
+    ".config/ags".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/pkgs/ags";
+    ".config/wayfire.ini".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/pkgs/wayfire/wayfire.ini";
   };
 
   home.sessionVariables = {

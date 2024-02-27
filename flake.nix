@@ -10,9 +10,11 @@
     android-nixpkgs.inputs.nixpkgs.follows = "nixpkgs";
     wezterm.url = "github:wez/wezterm?dir=nix";
     ags.url = "github:Aylur/ags/v1.7.7";
+    atuin.url = "github:atuinsh/atuin";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, android-nixpkgs, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, android-nixpkgs, atuin, nix-colors, ... } @inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -31,7 +33,7 @@
       homeConfigurations = {
         "getmoussed" = home-manager.lib.homeManagerConfiguration {
           inherit lib pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs nix-colors; };
           modules = [
             ./home.nix
           ];
