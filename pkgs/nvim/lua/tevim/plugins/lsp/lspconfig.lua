@@ -61,5 +61,6 @@ lspconfig.svelte.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.gopls.setup({})
 lspconfig.nixd.setup({})
+lspconfig.dartls.setup({})
 
 return M

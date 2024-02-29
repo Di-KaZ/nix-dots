@@ -48,15 +48,16 @@
     yazi
     nodejs_18
     networkmanagerapplet
+    upscayl
+    gum
+    beekeeper-studio
+    neovide
+    eza
     (import ./dev_envs/dev-env.nix {
       inherit pkgs;
       homeDirectory = config.home.homeDirectory;
     })
   ];
-
-  imports = [ inputs.ags.homeManagerModules.default ./pkgs/wayfire/module.nix ];
-
-  test = "HAHA";
 
   programs.atuin = {
     enable = true;
@@ -81,7 +82,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "neovide";
   };
 
   programs.git = {
@@ -115,8 +116,9 @@
     '';
 
     shellAliases = {
-      n = "nvim";
+      n = "neovide";
       home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";
+      ls = "eza --icons";
     };
   };
 
