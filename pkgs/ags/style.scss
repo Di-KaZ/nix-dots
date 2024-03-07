@@ -1,0 +1,99 @@
+$base00: #1F1F28;
+$base01: #2A2A37;
+$base02: #223249;
+$base03: #727169;
+$base04: #C8C093;
+$base05: #DCD7BA;
+$base06: #938AA9;
+$base07: #363646;
+$base08: #C34043;
+$base09: #FFA066;
+$base0A: #DCA561;
+$base0B: #98BB6C;
+$base0C: #7FB4CA;
+$base0D: #7E9CD8;
+$base0E: #957FB8;
+$base0F: #D27E99;
+
+$padding: 10px;
+
+* {
+	all: unset;
+	// font-family: 'Monaspace Neon';
+	font-family: 'Monaspace Neon';
+	font-size: 18px;
+}
+
+.workspace {
+	.minimap {
+
+		.box {
+			transition: color ease-in-out .5s;
+			background-color: $base06;
+			border-radius: 2px;
+			margin: 2px;
+			min-width: 7px;
+			min-height: 7px;
+
+			&.active {
+				background-color: $base0D;
+			}
+		}
+	}
+}
+
+.bar {
+	background-color: $base00;
+	color: $base05;
+	font-family: 'CozetteHiDpi', 'Monaspace Neon';
+	border: 1px dotted $base0E;
+	border-radius: 20px;
+	min-height: 40px;
+}
+
+.clock {
+	// * {
+	// 	font-family: 'CozetteHiDpi', 'Monaspace Neon';
+	// }
+
+	.separator {
+		color: $base06;
+		padding-left: $padding;
+		padding-right: $padding;
+	}
+}
+
+progressbar {
+	border-radius: 20px;
+	background-color: $base06;
+	min-height: 5px;
+	min-width: 10px;
+
+
+	progress {
+		min-height: 5px;
+		min-width: 10px;
+		border-radius: 20px;
+		background-color: $base0B;
+	}
+}
+
+.tray {
+	.button {
+		all: unset;
+	}
+}
+
+.player {
+
+	.cover {
+		border-radius: 20px;
+		min-width: 70px;
+	}
+
+	.darken {
+		background-color: rgba(0, 0, 0, .7);
+	}
+
+	.label {}
+}

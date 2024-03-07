@@ -24,8 +24,8 @@
       vulkan-tools
       vulkan-headers
       vulkan-loader
-      vulkan-validation-layers # maybe?
-      glslang # or shaderc
+      vulkan-validation-layers
+      glslang
       libseat
       hwdata
       libdisplay-info
@@ -35,14 +35,14 @@
       "--sysconfdir /etc"
       "-Duse_system_wlroots=disabled"
       "-Duse_system_wfconfig=disabled"
-      # TODO: (lib.mesonEnable "wf-touch:tests" (stdenv.buildPlatform.canExecute stdenv.hostPlatform))
+      # (lib.mesonEnable "wf-touch:tests" (stdenv.buildPlatform.canExecute stdenv.hostPlatform))
     ];
     src = pkgs.fetchFromGitHub {
       owner = "WayfireWM";
       repo = "wayfire";
-      rev = "27ddca3000a17ed7e1f1619dd14152373e39cb1b";
+      rev = "2e0926f8f5a1c3834c51e97673bfbf074f4506ac";
       fetchSubmodules = true;
-      hash = "sha256-vl0Qc8HEkMN+rhC2ZB5+jsr1nBNTLC+y1uZw2Qqr1oM=";
+      hash = "sha256-/cVsuBCkt7WxPauMyko9FXdAsO6eYbkCgMP9YRbzaP8=";
     };
   });
 })

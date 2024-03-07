@@ -4,6 +4,8 @@
   # colorScheme = nix-colors.colorSchemes.kanagawa;
   nixpkgs.config.allowUnfree = true;
 
+  imports = [ inputs.ags.homeManagerModules.default ];
+
   home.username = "getmoussed";
   home.homeDirectory = "/home/getmoussed";
 
@@ -15,6 +17,11 @@
   gtk.iconTheme.package = pkgs.papirus-icon-theme;
   gtk.iconTheme.name = "Papirus";
 
+  # fix crash on pixdecor wayfire
+  xdg.systemDirs.data = [
+    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
 
   services = {
     gammastep = {
@@ -44,15 +51,17 @@
     bun
     gvfs
     gjs
-    sassc
+    sass
     yazi
     nodejs_18
     networkmanagerapplet
-    upscayl
     gum
     beekeeper-studio
     neovide
     eza
+    ripgrep
+    fzf
+    pamixer
     (import ./dev_envs/dev-env.nix {
       inherit pkgs;
       homeDirectory = config.home.homeDirectory;
@@ -82,7 +91,9 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "neovide";
+    EDITOR = "nvim";
+    SWWW_TRANSITION_FPS = "60";
+    SWWW_TRANSITION = "outer";
   };
 
   programs.git = {
@@ -106,7 +117,6 @@
       ];
   };
 
-
   programs.zsh = {
     enable = true;
     initExtra = ''
@@ -116,7 +126,7 @@
     '';
 
     shellAliases = {
-      n = "neovide";
+      n = "nvim";
       home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";
       ls = "eza --icons";
     };
@@ -135,4 +145,3 @@
 
   programs.home-manager.enable = true;
 }
-

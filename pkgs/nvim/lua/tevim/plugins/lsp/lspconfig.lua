@@ -58,9 +58,14 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.svelte.setup({})
+lspconfig.pylsp.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.gopls.setup({})
 lspconfig.nixd.setup({})
 lspconfig.dartls.setup({})
+lspconfig.cssls.setup({})
+lspconfig.unocss.setup({
+	filetypes = { "ts" },
+})
 
 return M

@@ -10,8 +10,7 @@
       ./hardware-configuration.nix
     ];
 
-  #boot.loader.grub.configurationLimit = 5;
-  #nix.gc.automatic = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Flake activation
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -22,8 +21,6 @@
   boot.loader.systemd-boot.configurationLimit = 5;
 
   networking.hostName = "nixos"; # Define your hostname.
-  #networking.wireless.userControlled.enable = true;
-  #networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
   # NVIDIA
@@ -41,13 +38,13 @@
     open = true;
     nvidiaSettings = true;
     prime = {
-      sync.enable = true;
+      # sync.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      # offload = {
-      # enable = true;
-      # enableOffloadCmd = true;
-      # };
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
     };
   };
 
@@ -56,7 +53,8 @@
   # Enable Adb
   programs.adb.enable = true;
 
-  # Sound
+  virtualisation.docker.enable = true;
+
   programs.dconf.enable = true;
 
   # Sound
@@ -65,9 +63,18 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
   };
+
+
+  xdg.portal = {
+    enable = true;
+    config.common = {
+      default = [ "gtk" ];
+    };
+    # "org.freedesktop.portal.FileChooser" = [ "thunar" ];
+  };
+
+
 
   # Enable login manager
   services.xserver.enable = true;
@@ -75,13 +82,15 @@
 
   services.upower.enable = true;
 
-  # Enable wayfire ?
+  # Enable wayfire
   programs.wayfire = {
     enable = true;
+    plugins = [ (pkgs.callPackage ./pkgs/wayfire/plugins/pixdecor.nix { }) ];
   };
 
   fonts.packages = with pkgs; [
     monaspace
+    cozette
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
@@ -106,16 +115,17 @@
   users.users.getmoussed = {
     isNormalUser = true;
     description = "getmoussed";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "plugdev" "docker" ];
     packages = with pkgs; [ ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     neovim
     git
+    appimage-run
   ];
+
+  programs.thunar.enable = true;
 
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;

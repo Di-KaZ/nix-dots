@@ -9,7 +9,7 @@
     android-nixpkgs.url = "github:tadfisher/android-nixpkgs/stable";
     android-nixpkgs.inputs.nixpkgs.follows = "nixpkgs";
     wezterm.url = "github:wez/wezterm?dir=nix";
-    ags.url = "github:Aylur/ags/v1.7.7";
+    ags.url = "github:Aylur/ags/v1.8.0";
     atuin.url = "github:atuinsh/atuin";
     nix-colors.url = "github:misterio77/nix-colors";
   };

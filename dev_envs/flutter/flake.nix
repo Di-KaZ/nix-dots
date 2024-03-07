@@ -31,13 +31,13 @@
                 emulatorVersion = "34.1.9";
                 platformVersions = [ "28" "29" "30" "31" "32" "33" "34" ];
                 includeSources = false;
-                includeSystemImages = false;
-                systemImageTypes = [ "google_apis_playstore" ];
-                abiVersions = [ "armeabi-v7a" "arm64-v8a" ];
+                includeSystemImages = true;
+                systemImageTypes = [ "system-images" "google_apis_playstore" "android-27" "x86_64" ];
+                abiVersions = [ "x86_64" ];
                 cmakeVersions = [ "3.10.2" ];
                 includeNDK = true;
                 ndkVersions = [ "22.0.7026061" ];
-                useGoogleAPIs = false;
+                useGoogleAPIs = true;
                 useGoogleTVAddOns = false;
               };
           in
@@ -47,12 +47,14 @@
                 flutter
                 jdk17
                 android.platform-tools
+                google-chrome
               ];
             ANDROID_SDK_ROOT = "${android.androidsdk}/libexec/android-sdk";
             GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${android.androidsdk}/libexec/android-sdk/build-tools/34.0.0/aapt2";
             ANDROID_HOME = "${android.androidsdk}/libexec/android-sdk";
             JAVA_HOME = pkgs.jdk17;
-            ANDROID_AVD_HOME = (toString ./.) + "/.android/avd";
+            CHROME_EXECUTABLE = "google-chrome-stable";
+            # ANDROID_AVD_HOME = (toString ./.) + "/.android/avd";
           };
       });
 }
