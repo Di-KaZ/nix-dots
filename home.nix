@@ -50,6 +50,7 @@
     ./user/git.nix
     ./user/zsh.nix
     ./user/ags.nix
+    ./user/nvim.nix
     ./user/wm/wayfire.nix
     ./user/wezterm.nix
   ];
