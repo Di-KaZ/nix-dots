@@ -29,7 +29,6 @@
     nixd
     swww
     pfetch
-    steam
     vscode
     yazi
     nodejs_18
@@ -39,6 +38,7 @@
     eza
     pamixer
     appimage-run
+    vlc
     (import ./dev_envs/dev-env.nix {
       inherit pkgs;
       homeDirectory = config.home.homeDirectory;
@@ -53,6 +53,7 @@
     ./user/nvim.nix
     ./user/wm/wayfire.nix
     ./user/wezterm.nix
+    ./user/steam.nix
   ];
 
 

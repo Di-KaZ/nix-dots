@@ -21,6 +21,8 @@ interface Output {
 
 const toOutputs = (json: string): Array<Output> => {
 	const tmp = JSON.parse(json) as Array<any>;
+	console.log(tmp);
+
 	return tmp.map(j => {
 		return {
 			id: j['id'],

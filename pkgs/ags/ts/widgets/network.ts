@@ -7,11 +7,11 @@ const WifiIndicator = () => Widget.Box({
 		Widget.Icon({
 			icon: Network.wifi.bind('icon_name'),
 		}),
-		Widget.Box({ widthRequest: 5 }),
-		Widget.Label({
-			label: Network.wifi.bind('ssid')
-				.as(ssid => ssid || 'Unknown').transform(v => v.toLowerCase()),
-		}),
+		// Widget.Box({ widthRequest: 5 }),
+		// Widget.Label({
+		// 	label: Network.wifi.bind('ssid')
+		// 		.as(ssid => ssid || 'Unknown').transform(v => v.toLowerCase()),
+		// }),
 	],
 })
 

@@ -7,31 +7,33 @@ import Player from './widgets/player';
 import VolumeIcon from './widgets/volume_icon';
 import Brightness from './widgets/brightness';
 import Workspaces from './widgets/workspaces';
+import ScreeCorner from './widgets/screen_corner';
 
 const input = `./style.scss`
 
 // target css file
 const output = `/tmp/ags/style.css`
 
-try {
-
-	const res = Utils.exec(`sass ${input}:${output} --style compressed`)
-
-	console.log(res)
-
-} catch (e) {
-	logError(e)
-}
+// try {
+//
+// 	const res = Utils.exec(`sass ${input}:${output} --style compressed`)
+//
+// 	console.log(res)
+//
+// } catch (e) {
+// 	logError(e)
+// }
 
 const Bar = (monitor: number) => Widget.Window({
 	name: `bar-${monitor}`,
-	anchor: ['left', 'bottom', 'right'],
+	anchor: ['left', 'top', 'right'],
 	exclusivity: "exclusive",
-	margins: [20, 10, 10, 10],
+	margins: [0, 0, 0, 0],
 	child: Widget.CenterBox({
 		className: "bar",
 		startWidget: Widget.Box({
 			children: [
+				Widget.Box({ widthRequest: 10 }),
 				Workspaces()
 			],
 		}),

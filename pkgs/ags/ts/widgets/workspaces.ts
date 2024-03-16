@@ -27,7 +27,6 @@ export default () => Widget.Box({
 	className: 'workspace',
 	valign: Gtk.Align.CENTER,
 	children: [
-		Widget.Box({ widthRequest: 20 }),
 		Widget.Box().bind('child', Wayfire.active, 'workspace_set', wset => MiniMap(wset)),
 		Widget.Box({ widthRequest: 5 }),
 		Widget.Label({ className: 'index', label: Wayfire.active.workspace_set.bind('active_index').transform(active_index => active_index.toString()) }),

@@ -19,21 +19,19 @@ $padding: 10px;
 
 * {
 	all: unset;
-	// font-family: 'Monaspace Neon';
 	font-family: 'Monaspace Neon';
 	font-size: 18px;
 }
 
 .workspace {
 	.minimap {
-
 		.box {
 			transition: color ease-in-out .5s;
 			background-color: $base06;
 			border-radius: 2px;
 			margin: 2px;
-			min-width: 7px;
-			min-height: 7px;
+			min-width: 5px;
+			min-height: 5px;
 
 			&.active {
 				background-color: $base0D;
@@ -45,17 +43,12 @@ $padding: 10px;
 .bar {
 	background-color: $base00;
 	color: $base05;
-	font-family: 'CozetteHiDpi', 'Monaspace Neon';
-	border: 1px dotted $base0E;
-	border-radius: 20px;
+	// border: 3px solid $base0E;
+	border-radius: 0px 0px 20px 20px;
 	min-height: 40px;
 }
 
 .clock {
-	// * {
-	// 	font-family: 'CozetteHiDpi', 'Monaspace Neon';
-	// }
-
 	.separator {
 		color: $base06;
 		padding-left: $padding;
@@ -94,6 +87,4 @@ progressbar {
 	.darken {
 		background-color: rgba(0, 0, 0, .7);
 	}
-
-	.label {}
 }
