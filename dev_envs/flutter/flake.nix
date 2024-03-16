@@ -47,7 +47,14 @@
                 flutter
                 jdk17
                 android.platform-tools
-                google-chrome
+                (google-chrome.override
+                  {
+                    commandLineArgs = [
+                      "--ozone-platform=wayland"
+                      "--enable-features=VaapiVideoDecoder"
+                      "--use-gl=egl"
+                    ];
+                  })
               ];
             ANDROID_SDK_ROOT = "${android.androidsdk}/libexec/android-sdk";
             GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${android.androidsdk}/libexec/android-sdk/build-tools/34.0.0/aapt2";

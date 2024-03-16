@@ -19,6 +19,10 @@ local plugins = {
 	'conform',
 	'indentscope',
 	'splitjoin',
+	'starter',
+	'neogit',
+	'surround',
+	'highlight-colors'
 };
 
 for _, plug in ipairs(plugins) do

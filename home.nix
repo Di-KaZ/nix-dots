@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, nix-colors, ... }:
+{ config, pkgs,  overlays, ... }:
 
 {
   # colorScheme = nix-colors.colorSchemes.kanagawa;
@@ -8,6 +8,8 @@
   home.homeDirectory = "/home/getmoussed";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
+
+  nixpkgs.overlays = overlays;
 
   services = {
     gammastep = {
@@ -19,6 +21,7 @@
   };
 
   home.packages = with pkgs; [
+    cargo
     firefox
     wofi
     bottom
@@ -39,11 +42,13 @@
     pamixer
     appimage-run
     vlc
+    glava
     (import ./dev_envs/dev-env.nix {
       inherit pkgs;
       homeDirectory = config.home.homeDirectory;
     })
   ];
+
 
   imports = [
     ./user/env.nix

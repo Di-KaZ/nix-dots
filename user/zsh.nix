@@ -10,6 +10,8 @@
 
     shellAliases = {
       n = "nvim";
+      # temporary
+      nn = "steam-run nvim -u ~/.dotfiles/pkgs/new_nvim/init.lua";
       home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";
       ls = "eza --icons";
     };

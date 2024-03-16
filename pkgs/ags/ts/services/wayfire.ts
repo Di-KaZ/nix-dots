@@ -1,6 +1,6 @@
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
-import { WAYFIRE_EVENTS, WayfireEvent, WaylandIPCMessage, WorkspaceSet, jsonify } from './wayfire_types';
+import { View, WAYFIRE_EVENTS, WayfireEvent, WaylandIPCMessage, WorkspaceSet, jsonify } from './wayfire_types';
 
 Gio._promisify(Gio.DataInputStream.prototype, 'read_bytes_async');
 
@@ -35,26 +35,6 @@ const toOutputs = (json: string): Array<Output> => {
 		} as Output
 	})
 }
-
-interface View {
-	id: number;
-	title: string;
-	active: boolean;
-	app_id: string;
-	width: number;
-	height: number;
-	x: number;
-	y: number;
-	fullscreen: boolean;
-	focusable: boolean;
-	minimized: boolean;
-	output_id: number;
-	output_name: string;
-	wset_index: number;
-	sticky: boolean;
-}
-
-
 
 export class ActiveWorkspaceSet extends Service {
 
@@ -384,12 +364,13 @@ export class Wayfire extends Service {
 			const payload = this._payload({ method: 'window-rules/list-views', data: {} });
 
 			const views = jsonify<Array<View>>(initial ? this.message(payload) : await this.messageAsync(payload))
+			console.log(views);
 
 			this._views = {};
 
 			for (const view of views) {
 				this._views[view.id] = view;
-				if (view.active) {
+				if (view.activated) {
 					this._active.view.update(view.id, view.title);
 				}
 			}

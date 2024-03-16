@@ -23,6 +23,7 @@ interface _Geometry {
 
 export interface View {
 	activated: boolean;
+	title: string;
 	app_id: string;
 	base_geometry: _Geometry;
 	bbox: _Geometry;
