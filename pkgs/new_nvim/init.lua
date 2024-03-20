@@ -23,3 +23,5 @@ require('mini.deps').setup({ path = { package = path_package } })
 
 require 'keymap'
 require 'plugins.init'
+
+require 'neovide'

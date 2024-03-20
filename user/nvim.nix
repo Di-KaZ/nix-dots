@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
+    libgit2
     neovim-nightly
     ripgrep
     fzf
     wget
     wl-clipboard
-    steam-run
+	neovide
   ];
 
   home.file.

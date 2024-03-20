@@ -8,7 +8,7 @@ require("mini.basics").setup({
 		extra_ui = false,
 
 		-- Presets for window borders ('single', 'double', ...)
-		win_borders = 'default',
+		win_borders = 'single',
 	},
 
 	-- Mappings. Set to `false` to disable.

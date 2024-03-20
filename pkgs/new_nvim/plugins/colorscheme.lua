@@ -1,8 +1,16 @@
 local add = MiniDeps.add
 
-add({ source = "muchzill4/doubletrouble" })
-add({ source = "miikanissi/modus-themes.nvim" })
-add({ source = "rebelot/kanagawa.nvim" })
+add("muchzill4/doubletrouble")
+add("miikanissi/modus-themes.nvim")
+add("rebelot/kanagawa.nvim")
+
+add("wllfaria/scheming.nvim")
+require("scheming").setup({
+	schemes = {
+		doubletrouble = {},
+		kanagawa = {},
+	}
+})
 
 vim.cmd('colorscheme kanagawa')
 
@@ -13,5 +21,6 @@ require("transparent").setup({
 		"FloatBorder",
 		"NoiceCmdlinePopupBorder",
 		"NotifyBackground",
+		"DiagnosticSignInfo",
 	},
 })

@@ -22,6 +22,7 @@
   programs.adb.enable = true;
   programs.dconf.enable = true;
   programs.thunar.enable = true;
+  programs.nix-ld.enable = true;
   programs.zsh.enable = true;
 
   virtualisation.docker.enable = true;
