@@ -1,9 +1,17 @@
 local add = MiniDeps.add
 
--- require("mini.base16").setup()
-require("mini.colors").setup()
-
+add({ source = "muchzill4/doubletrouble" })
+add({ source = "miikanissi/modus-themes.nvim" })
 add({ source = "rebelot/kanagawa.nvim" })
-require("kanagawa").setup()
 
-vim.cmd 'colorscheme kanagawa'
+vim.cmd('colorscheme kanagawa')
+
+add({ source = "xiyaowong/transparent.nvim" })
+require("transparent").setup({
+	extra_groups = {
+		"NormalFloat",
+		"FloatBorder",
+		"NoiceCmdlinePopupBorder",
+		"NotifyBackground",
+	},
+})

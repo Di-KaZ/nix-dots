@@ -11,6 +11,10 @@ add({
 	},
 })
 
+
+-- neodev need to be stup before lspconfig
+require("neodev").setup()
+
 require('nvim-web-devicons').setup()
 
 require("mason").setup()

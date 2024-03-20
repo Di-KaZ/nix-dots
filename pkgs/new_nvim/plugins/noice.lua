@@ -5,6 +5,15 @@ add({
 	-- supply dependencies near target plugin
 	depends = { "MunifTanjim/nui.nvim" },
 })
+--
+-- require("mini.notify").setup({
+-- 	lsp_progress = {
+-- 		enable = true,
+-- 	},
+-- 	window = {
+-- 		winblend = 0,
+-- 	}
+-- })
 
 require('noice').setup({
 	lsp = {
@@ -12,9 +21,25 @@ require('noice').setup({
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+		},
+		-- progress = {
+		-- 	enabled = false
+		-- }
+	},
+	views = {
+		mini = {
+			win_options = {
+				winblend = 0,
+			},
 		},
 	},
+	-- notify = {
+	-- 	enabled = false,
+	-- 	view = "notify",
+	-- },
+	-- message = {
+	-- 	enabled = false,
+	-- },
 	-- you can enable a preset for easier configuration
 	presets = {
 		bottom_search = false, -- use a classic bottom cmdline for search

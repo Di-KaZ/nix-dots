@@ -41,5 +41,10 @@ miniclue.setup({
 		miniclue.gen_clues.registers(),
 		miniclue.gen_clues.windows(),
 		miniclue.gen_clues.z(),
+		{ mode = 'n', keys = '<Leader>f', desc = '  Files' },
+		{ mode = 'n', keys = '<Leader>g', desc = '  Lsp' },
+		{ mode = 'n', keys = '<Leader>d', desc = '  Debugger' },
+		{ mode = 'n', keys = '<Leader>b', desc = '  Debugger' },
+		{ mode = 'n', keys = '<Leader>t', desc = '  Terminal' },
 	},
 })

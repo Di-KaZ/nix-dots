@@ -1,12 +1,16 @@
 local plugins = {
 	'basics',
 	'colorscheme',
+	'bufferline',
 	'noice',
 	'reactive',
 	'statusline',
 	'move',
+	'comment',
 	'pairs',
 	'treesitter',
+	'neodev',
+	'lsp_lines',
 	'lspconfig',
 	'completion',
 	'pick',
@@ -22,7 +26,9 @@ local plugins = {
 	'starter',
 	'neogit',
 	'surround',
-	'highlight-colors'
+	'highlight-colors',
+	'gitsigns',
+	'termim',
 };
 
 for _, plug in ipairs(plugins) do

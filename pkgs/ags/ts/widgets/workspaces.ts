@@ -30,7 +30,7 @@ export default () => Widget.Box({
 		Widget.Box().bind('child', Wayfire.active, 'workspace_set', wset => MiniMap(wset)),
 		Widget.Box({ widthRequest: 5 }),
 		Widget.Label({ className: 'index', label: Wayfire.active.workspace_set.bind('active_index').transform(active_index => active_index.toString()) }),
-		Widget.Box({ widthRequest: 10 }),
-		Widget.Label({ className: 'title', label: Wayfire.active.view.bind('title') }),
+		// Widget.Box({ widthRequest: 10 }),
+		// Widget.Label({ className: 'title', label: Wayfire.active.view.bind('title') }),
 	],
 });

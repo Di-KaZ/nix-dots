@@ -2,30 +2,49 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
-local opts = { noremap = false, silent = true }
-
+--- sets a normal keymap preprending <CMD> and appending <CR> with a description
+--- @param keymap string 	
+--- @param cmd string 	
+--- @param desc string 	
+local function nmap(keymap, cmd, desc)
+	map("n", keymap, "<CMD>" .. cmd .. "<CR>", { desc = desc })
+end
 
 -- Debugger
-map("n", "<leader>dt", "<CMD>lua require('dapui').toggle()<CR>", opts, { desc = "Toggle Debugger" })
-map("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", opts, { desc = "Toggle Breakpoint" })
-map("n", "<leader>dc", "<CMD>DapContinue<CR>", opts, { desc = "Continue" })
-map("n", "<leader>di", "<CMD>DapStrpInto<CR>", opts, { desc = "Into" })
-map("n", "<leader>do", "<CMD>DapStepOver<CR>", opts, { desc = "Over" })
+nmap("<leader>dt", "lua require('dapui').toggle()", "Toggle Debugger")
+nmap("<leader>db", "DapToggleBreakpoint", "Toggle Breakpoint")
+nmap("<leader>dc", "DapContinue", "Continue")
+nmap("<leader>di", "DapStrpInto", "Into")
+nmap("<leader>do", "DapStepOver", "Step Over")
 
 -- Files management
-map("n", "<leader>fe", "<CMD>:lua MiniFiles.open()<CR>", opts, { desc = "Find files" })
-map("n", "<C-e>", "<CMD>:lua MiniFiles.open()<CR>", opts, { desc = "Find files" })
-map("n", "<leader>ff", "<CMD>Pick files<CR>", opts, { desc = "Find files" })
-map("n", "<leader>fw", "<CMD>Pick grep_live<CR>", opts, { desc = "Find match" })
+nmap("<leader>fe", "lua MiniFiles.open()", "Find files")
+nmap("<C-e>", "lua MiniFiles.open()", "Find files")
+nmap("<leader>ff", "Pick files", "Find files")
+nmap("<leader>fw", "Pick grep_live", "Find match")
 
 -- Lsp
-map("n", "<S-k>", "<CMD>LspUI hover<CR>", opts, { desc = "Hover" })
-map("n", "gd", "<CMD>LspUI declaration<CR>", opts, { desc = "Declaration" })
-map("n", "gr", "<CMD>LspUI reference<CR>", opts, { desc = "References" })
-map("n", "ga", "<CMD>LspUI code_action<CR>", opts, { desc = "Code Actions" })
-map("n", "gn", "<CMD>LspUI rename<CR>", opts, { desc = "Rename" })
-map("n", "gsd", "<CMD>Pick diagnostic<CR>", opts, { desc = "Show diagnostics" })
-map("n", "<C-A>", "<CMD>LspUI inlay_hint<CR>", opts, { desc = "Inlay Hint" })
+nmap("<S-k>", "LspUI hover", "Hover")
+nmap("gd", "LspUI definition", "Declaration")
+nmap("gr", "LspUI reference", "References")
+nmap("ga", "LspUI code_action", "Code Actions")
+nmap("<leader>gr", "LspUI rename", "Rename")
+nmap("<leader>gi", "LspUI inlay_hint", "Inlay Hint")
+nmap("<leader>gd", "Pick diagnostic", "Diagnostics")
+nmap("<leader>gs", "lua MiniExtra.pickers.lsp({ scope = 'document_symbol' })", "Document Symbol")
+nmap("<leader>gS", "lua MiniExtra.pickers.lsp({ scope = 'workspace_symbol' })", "Workspace Symbols")
+-- Git
+nmap('<leader>gn', "Neogit", "Neogit")
+
+-- Buffers
+nmap("<leader>bp", "BufferLinePick", "Jump to buffer")
+nmap("<S-Tab>", "BufferLineCyclePrev", "Prev buffer")
+nmap("<Tab>", "BufferLineCycleNext", "Next buffer")
+
+-- Terminals
+nmap("<leader>tv", "Vterm", "Vertical Terminal")
+nmap("<leader>ts", "Sterm", "Horizontal Terminal")
+nmap("<leader>tf", "Fterm", "Floating Terminal")
 
 -- Completion
 map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
