@@ -13,6 +13,7 @@
   ];
 
   home.sessionVariables = {
+    TERM = "wezterm";
     EDITOR = "nvim";
     SWWW_TRANSITION_FPS = "60";
     SWWW_TRANSITION = "outer";

@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, inputs, lib, stdenv, nixpkgs, overlays, ... }:
+{ pkgs,  overlays, ... }:
 
 {
   # enable flake 
@@ -22,8 +22,11 @@
   programs.adb.enable = true;
   programs.dconf.enable = true;
   programs.thunar.enable = true;
-  programs.nix-ld.enable = true;
   programs.zsh.enable = true;
+  programs.nix-ld = {
+    enable = true;
+	libraries = with pkgs; [ libgit2 ];
+  };
 
   virtualisation.docker.enable = true;
 

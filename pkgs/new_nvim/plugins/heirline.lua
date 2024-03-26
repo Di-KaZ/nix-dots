@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "rebelot/heirline.nvim",
 	depends = {
 		"Zeioth/heirline-components.nvim",
@@ -20,7 +18,6 @@ heirline.setup({
 	statusline = { -- UI statusbar
 		hl = { fg = "fg", bg = "bg" },
 		components.component.git_branch(),
-		components.component.file_info(),
 		components.component.git_diff(),
 		components.component.diagnostics(),
 		components.component.fill(),

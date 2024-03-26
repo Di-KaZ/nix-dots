@@ -20,7 +20,13 @@
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = 
+  let dev-envs = import ./dev_envs/dev-env.nix {
+      inherit pkgs;
+      homeDirectory = config.home.homeDirectory;
+    }; 
+	in
+	with pkgs; [
     cargo
     firefox
     wofi
@@ -43,10 +49,8 @@
     appimage-run
     vlc
     glava
-    (import ./dev_envs/dev-env.nix {
-      inherit pkgs;
-      homeDirectory = config.home.homeDirectory;
-    })
+	floorp
+	dev-envs
   ];
 
 

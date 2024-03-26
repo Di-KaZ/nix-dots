@@ -1,10 +1,10 @@
-local add = MiniDeps.add
+MiniDeps.add("muchzill4/doubletrouble")
+MiniDeps.add("miikanissi/modus-themes.nvim")
+MiniDeps.add("rebelot/kanagawa.nvim")
+MiniDeps.add("rktjmp/lush.nvim")
+MiniDeps.add("metalelf0/jellybeans-nvim")
+MiniDeps.add("wllfaria/scheming.nvim")
 
-add("muchzill4/doubletrouble")
-add("miikanissi/modus-themes.nvim")
-add("rebelot/kanagawa.nvim")
-
-add("wllfaria/scheming.nvim")
 require("scheming").setup({
 	schemes = {
 		doubletrouble = {},
@@ -12,9 +12,9 @@ require("scheming").setup({
 	}
 })
 
-vim.cmd('colorscheme kanagawa')
+vim.cmd('colorscheme jellybeans-nvim')
 
-add({ source = "xiyaowong/transparent.nvim" })
+MiniDeps.add({ source = "xiyaowong/transparent.nvim" })
 require("transparent").setup({
 	extra_groups = {
 		"NormalFloat",
@@ -24,3 +24,5 @@ require("transparent").setup({
 		"DiagnosticSignInfo",
 	},
 })
+
+vim.cmd("TransparentEnable")

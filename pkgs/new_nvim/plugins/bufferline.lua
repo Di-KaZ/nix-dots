@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "akinsho/bufferline.nvim",
 	deppends = {
 		"nvim-tree/nvim-web-devicons",

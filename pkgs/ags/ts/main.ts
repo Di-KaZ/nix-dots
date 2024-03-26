@@ -14,21 +14,25 @@ const input = `./style.scss`
 // target css file
 const output = `/tmp/ags/style.css`
 
-// try {
-//
-// 	const res = Utils.exec(`sass ${input}:${output} --style compressed`)
-//
-// 	console.log(res)
-//
-// } catch (e) {
-// 	logError(e)
-// }
+try {
+	const res = Utils.exec(`sass ${input}:${output} --style compressed`)
+
+	console.log(res)
+
+} catch (e) {
+	logError(e)
+}
 
 const Bar = (monitor: number) => Widget.Window({
 	name: `bar-${monitor}`,
 	anchor: ['left', 'top', 'right'],
 	exclusivity: "exclusive",
-	margins: [0, 0, 10, 0],
+	margins: [
+		10, // top
+		200, // right
+		20, // bottom
+		200 // left
+	],
 	child: Widget.CenterBox({
 		className: "bar",
 		startWidget: Widget.Box({

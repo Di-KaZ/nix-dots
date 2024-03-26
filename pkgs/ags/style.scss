@@ -14,77 +14,77 @@ $base0C: #7FB4CA;
 $base0D: #7E9CD8;
 $base0E: #957FB8;
 $base0F: #D27E99;
-
+$highlight: rgba(76.5, 76.5, 76.5, 76.5);
 $padding: 10px;
 
 * {
-	all: unset;
-	font-family: 'Monaspace Neon';
-	font-size: 18px;
+  all: unset;
+  font-family: 'kirsch';
+  font-size: 22px;
 }
 
 .workspace {
-	.minimap {
-		.box {
-			transition: color ease-in-out .5s;
-			background-color: $base06;
-			border-radius: 2px;
-			margin: 2px;
-			min-width: 5px;
-			min-height: 5px;
+  .minimap {
+    .box {
+      transition: color ease-in-out .5s;
+      background-color: $base06;
+      border-radius: 2px;
+      margin: 2px;
+      min-width: 5px;
+      min-height: 5px;
 
-			&.active {
-				background-color: $base0D;
-			}
-		}
-	}
+      &.active {
+        background-color: $base0D;
+      }
+    }
+  }
 }
 
 .bar {
-	background-color: $base00;
-	color: $base05;
-	// border: 3px solid $base0E;
-	border-radius: 0px 0px 20px 20px;
-	min-height: 40px;
+  background-color: $base00;
+  color: $base05;
+  border: 1px solid $highlight;
+  // border-radius: 0px 0px 20px 20px;
+  min-height: 40px;
 }
 
 .clock {
-	.separator {
-		color: $base06;
-		padding-left: $padding;
-		padding-right: $padding;
-	}
+  .separator {
+    color: $base06;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 }
 
 progressbar {
-	border-radius: 20px;
-	background-color: $base06;
-	min-height: 5px;
-	min-width: 10px;
+  border-radius: 20px;
+  background-color: $base06;
+  min-height: 5px;
+  min-width: 10px;
 
 
-	progress {
-		min-height: 5px;
-		min-width: 10px;
-		border-radius: 20px;
-		background-color: $base0B;
-	}
+  progress {
+    min-height: 5px;
+    min-width: 10px;
+    border-radius: 20px;
+    background-color: $base0B;
+  }
 }
 
 .tray {
-	.button {
-		all: unset;
-	}
+  .button {
+    all: unset;
+  }
 }
 
 .player {
 
-	.cover {
-		border-radius: 20px;
-		min-width: 70px;
-	}
+  .cover {
+    border-radius: 20px;
+    min-width: 70px;
+  }
 
-	.darken {
-		background-color: rgba(0, 0, 0, .7);
-	}
+  .darken {
+    background-color: rgba(0, 0, 0, .7);
+  }
 }

@@ -9,13 +9,13 @@
     pulse.enable = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common = {
-      default = "*";
-    };
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #   config.common = {
+  #     default = "*";
+  #   };
+  # };
 
   imports = [ ./wm/wayfire.nix ];
 }

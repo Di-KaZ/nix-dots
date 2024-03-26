@@ -1,8 +1,6 @@
 { inputs, pkgs, config, ... }:
 {
   home.packages = with pkgs; [
-    gvfs
-    gjs
     bun
     sass
     brightnessctl

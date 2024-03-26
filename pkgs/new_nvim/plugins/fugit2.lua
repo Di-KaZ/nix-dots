@@ -8,3 +8,7 @@ add({
 		'nvim-lua/plenary.nvim',
 	}
 })
+
+require("fugit2").setup()
+-- require("nui").setup()
+-- require("plenary").setup()

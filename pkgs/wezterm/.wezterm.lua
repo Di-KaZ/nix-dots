@@ -16,6 +16,7 @@ config.enable_wayland = true
 
 -- config.font = wezterm.font 'Berkeley Mono'
 config.font = wezterm.font("Monaspace Neon")
+-- config.font = wezterm.font("Lotion")
 
 -- config.font = wezterm.font("Sophistry Sans Roguelike")
 -- config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
@@ -27,16 +28,11 @@ config.window_background_opacity = 0.8
 -- For example, changing the color scheme:
 config.enable_tab_bar = false
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 20,
+	right = 20,
+	top = 20,
+	bottom = 20,
 };
--- config.window_padding = {
---	left = 20,
---	right = 20,
---	top = 20,
---}
 
 -- config.color_scheme = 'Argonaut'
 -- config.color_scheme              = 'nord'

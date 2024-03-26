@@ -3,7 +3,8 @@ local add = MiniDeps.add
 add({
 	source = "rcarriga/nvim-dap-ui",
 	depends = {
-		"mfussenegger/nvim-dap"
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio"
 	},
 })
 
