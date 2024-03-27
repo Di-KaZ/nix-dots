@@ -9,6 +9,7 @@
 	neovide
   ];
 
+  # TODO: replace with flake once it's available
   home.file.
-  ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/pkgs/new_nvim";
+  ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/perso/neovimed";
 }
