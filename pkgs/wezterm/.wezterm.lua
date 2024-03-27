@@ -15,7 +15,7 @@ config.enable_wayland = true
 -- This is where you actually apply your config choices
 
 -- config.font = wezterm.font 'Berkeley Mono'
-config.font = wezterm.font("Monaspace Neon")
+config.font = wezterm.font("Monaspace Krypton")
 -- config.font = wezterm.font("Lotion")
 
 -- config.font = wezterm.font("Sophistry Sans Roguelike")

@@ -12,6 +12,7 @@ load_plugins(
 		--- base
 		{ name = 'basics',             priority = 1000 },
 		{ name = 'colorscheme',        priority = 101 },
+		{ name = "themery",            priority = 100 },
 		{ name = 'noice',              priority = 100 },
 		{ name = 'heirline',           priority = 50 },
 
@@ -30,6 +31,7 @@ load_plugins(
 		{ name = 'highlight-colors',   priority = 50 },
 		{ name = 'surround',           priority = 50 },
 		{ name = 'rainbow-delimiters', priority = 50 },
+		{ name = 'todo-comments',      priority = 50 },
 
 		-- lsp
 		{ name = 'lsp_lines',          priority = 51 },
@@ -38,6 +40,7 @@ load_plugins(
 		{ name = 'cmp',                priority = 51 },
 		{ name = 'flutter',            priority = 50 },
 		{ name = 'conform',            priority = 50 },
+		{ name = 'codeium',            priority = 50 },
 		{ name = 'treesitter',         priority = 110 },
 
 		-- files management
@@ -53,7 +56,7 @@ load_plugins(
 		{ name = 'neogit',             priority = 50 },
 		{ name = 'git-conflict',       priority = 50 },
 		{ name = 'fugit2',             priority = 50 },
-		
+
 		-- terminal
 		{ name = 'termim',             priority = 50 },
 	}

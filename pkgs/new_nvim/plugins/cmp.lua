@@ -12,6 +12,10 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local fallback_kind_symbol = {
+	["Codeium"] = ''
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -59,6 +63,7 @@ cmp.setup({
 		['<S-TAB>'] = cmp.mapping.select_prev_item(),
 	}),
 	sources = cmp.config.sources({
+		{ name = 'codeium' },
 		{ name = 'nvim_lsp' },
 		{ name = 'snippy' }, -- For snippy users.
 	}, {
@@ -71,7 +76,15 @@ cmp.setup({
 			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
 				vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. (strings[1] or "")
+			if #strings == 1 then
+				kind.kind = fallback_kind_symbol[strings[1]] or ""
+			elseif strings[1]
+			then
+				kind.kind = strings[1]
+			else
+				kind.kind = ""
+			end
+			kind.kind = " " .. kind.kind
 			return kind
 		end,
 	},

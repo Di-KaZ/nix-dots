@@ -25,7 +25,7 @@
   programs.zsh.enable = true;
   programs.nix-ld = {
     enable = true;
-	libraries = with pkgs; [ libgit2 ];
+	libraries = with pkgs; [ libgit2 prisma-engines ];
   };
 
   virtualisation.docker.enable = true;

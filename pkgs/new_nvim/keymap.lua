@@ -56,6 +56,9 @@ nmap("<leader>tv", "Vterm", "Vertical Terminal")
 nmap("<leader>ts", "Sterm", "Horizontal Terminal")
 nmap("<leader>tf", "Fterm", "Floating Terminal")
 
+-- Theme
+nmap("<leader>T", "Themery", "Themes Selector")
+
 -- Completion
 -- map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 -- map('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
