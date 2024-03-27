@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "NeogitOrg/neogit",
 	depends = {
 		"nvim-lua/plenary.nvim",
@@ -8,4 +6,4 @@ add({
 	}
 })
 
-require("neogit").setup()
+require("neogit").setup({})

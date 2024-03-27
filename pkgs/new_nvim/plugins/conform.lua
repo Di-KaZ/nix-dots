@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add("stevearc/conform.nvim")
+MiniDeps.add("stevearc/conform.nvim")
 
 require("conform").setup({
 	format_on_save = {

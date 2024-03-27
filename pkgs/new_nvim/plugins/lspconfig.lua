@@ -1,8 +1,6 @@
-local add = MiniDeps.add
+MiniDeps.add('nvim-tree/nvim-web-devicons')
 
-add('nvim-tree/nvim-web-devicons')
-
-add({
+MiniDeps.add({
 	source = 'neovim/nvim-lspconfig',
 	-- supply dependencies near target plugin
 	depends = {
@@ -13,6 +11,7 @@ add({
 
 
 -- neodev need to be stup before lspconfig
+MiniDeps.add("folke/neodev.nvim")
 require("neodev").setup()
 
 require('nvim-web-devicons').setup()

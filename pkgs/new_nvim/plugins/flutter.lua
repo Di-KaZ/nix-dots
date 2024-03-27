@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "akinsho/flutter-tools.nvim",
 	depends = {
 		"nvim-lua/plenary.nvim",

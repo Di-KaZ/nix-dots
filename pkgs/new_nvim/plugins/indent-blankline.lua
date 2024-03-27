@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add("lukas-reineke/indent-blankline.nvim")
+MiniDeps.add("lukas-reineke/indent-blankline.nvim")
 
 require("ibl").setup({
 	indent = { char = '╎' },

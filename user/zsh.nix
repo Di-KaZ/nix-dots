@@ -7,9 +7,8 @@
         nix-your-shell zsh | source /dev/stdin
       fi
     '';
-
     shellAliases = {
-      n = "nvim";
+      n = "LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH nvim";      
       home-switch = "home-manager switch --flake ${config.home.homeDirectory}/\.dotfiles/.";
       ls = "eza --icons";
     };

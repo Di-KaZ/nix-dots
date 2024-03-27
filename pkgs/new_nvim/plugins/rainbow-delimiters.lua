@@ -1,2 +1,1 @@
-local add = MiniDeps.add
-add("HiPhish/rainbow-delimiters.nvim")
+MiniDeps.add("HiPhish/rainbow-delimiters.nvim")

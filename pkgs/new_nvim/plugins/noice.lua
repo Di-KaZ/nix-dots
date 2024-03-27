@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "folke/noice.nvim",
 	-- supply dependencies near target plugin
 	depends = { "MunifTanjim/nui.nvim" },

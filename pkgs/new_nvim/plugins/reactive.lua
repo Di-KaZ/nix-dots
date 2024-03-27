@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "rasulomaroff/reactive.nvim",
 	depends = { "MunifTanjim/nui.nvim" },
 })

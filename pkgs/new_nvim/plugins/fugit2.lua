@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = 'SuperBo/fugit2.nvim',
 	depends = {
 		'MunifTanjim/nui.nvim',
@@ -10,5 +8,3 @@ add({
 })
 
 require("fugit2").setup()
--- require("nui").setup()
--- require("plenary").setup()

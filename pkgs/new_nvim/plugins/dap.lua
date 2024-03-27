@@ -1,6 +1,4 @@
-local add = MiniDeps.add
-
-add({
+MiniDeps.add({
 	source = "rcarriga/nvim-dap-ui",
 	depends = {
 		"mfussenegger/nvim-dap",
