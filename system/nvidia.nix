@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   hardware.opengl = {
     enable = true;
@@ -10,8 +10,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = true;
+    open = false;
     nvidiaSettings = true;
     prime = {
       # sync.enable = true;

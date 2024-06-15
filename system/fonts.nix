@@ -13,5 +13,6 @@ in
 	kirsch
 	victor-mono
 	lotion
+    maple-mono
   ];
 }

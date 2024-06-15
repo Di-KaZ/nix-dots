@@ -50,6 +50,8 @@
     vlc
     glava
 	floorp
+    xwaylandvideobridge
+	webcord
 	dev-envs
   ];
 
@@ -61,8 +63,10 @@
     ./user/ags.nix
     ./user/nvim.nix
     ./user/wm/wayfire.nix
+	./user/wm/hyprland.nix
     ./user/wezterm.nix
     ./user/steam.nix
+	./user/minecraft.nix
   ];
 
 

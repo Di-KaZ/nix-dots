@@ -7,7 +7,7 @@
     url = "github:edolstra/flake-compat";
     flake = false;
   };
-  inputs.flutter-nix.url = "github:maximoffua/flutter.nix/3.16.8";
+  inputs.flutter-nix.url = "github:maximoffua/flutter.nix/main";
 
   outputs = { self, nixpkgs, flake-utils, flutter-nix, ... }:
     flake-utils.lib.eachDefaultSystem (system:

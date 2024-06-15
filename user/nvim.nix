@@ -1,13 +1,18 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    neovim-nightly
     ripgrep
     fzf
     wget
     wl-clipboard
 	neovide
   ];
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    extraLuaPackages = ps: [ ps.magick ];
+  };
 
   # TODO: replace with flake once it's available
   home.file.

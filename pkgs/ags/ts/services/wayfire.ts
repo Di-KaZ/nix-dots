@@ -21,7 +21,6 @@ interface Output {
 
 const toOutputs = (json: string): Array<Output> => {
 	const tmp = JSON.parse(json) as Array<any>;
-	console.log(tmp);
 
 	return tmp.map(j => {
 		return {
@@ -364,7 +363,6 @@ export class Wayfire extends Service {
 			const payload = this._payload({ method: 'window-rules/list-views', data: {} });
 
 			const views = jsonify<Array<View>>(initial ? this.message(payload) : await this.messageAsync(payload))
-			console.log(views);
 
 			this._views = {};
 

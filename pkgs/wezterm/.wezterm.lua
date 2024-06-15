@@ -1,28 +1,80 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This table will hold the configuration.
-local config = {}
+local config = wezterm.config_builder()
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-	config = wezterm.config_builder()
+-- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
+local function is_vim(pane)
+	-- this is set by the plugin, and unset on ExitPre in Neovim
+	return pane:get_user_vars().IS_NVIM == 'true'
 end
 
-config.enable_wayland = true
+local direction_keys = {
+	h = 'Left',
+	j = 'Down',
+	k = 'Up',
+	l = 'Right',
+}
+
+local function split_nav(resize_or_move, key)
+	return {
+		key = key,
+		mods = resize_or_move == 'resize' and 'META' or 'CTRL',
+		action = wezterm.action_callback(function(win, pane)
+			if is_vim(pane) then
+				-- pass the keys through to vim/nvim
+				win:perform_action({
+					SendKey = { key = key, mods = resize_or_move == 'resize' and 'META' or 'CTRL' },
+				}, pane)
+			else
+				if resize_or_move == 'resize' then
+					win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+				else
+					win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+				end
+			end
+		end),
+	}
+end
+
+
+config.keys = {
+	-- move between split panes
+	split_nav('move', 'h'),
+	split_nav('move', 'j'),
+	split_nav('move', 'k'),
+	split_nav('move', 'l'),
+	-- resize panes
+	split_nav('resize', 'h'),
+	split_nav('resize', 'j'),
+	split_nav('resize', 'k'),
+	split_nav('resize', 'l'),
+	{
+		key = "h",
+		mods = "CTRL|ALT",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "v",
+		mods = "CTRL|ALT",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+}
+
+config.enable_wayland = false
 
 -- This is where you actually apply your config choices
 
 -- config.font = wezterm.font 'Berkeley Mono'
-config.font = wezterm.font("Monaspace Krypton")
+-- config.font = wezterm.font("Monaspace Neon")
+config.font = wezterm.font("Maple Mono")
 -- config.font = wezterm.font("Lotion")
 
 -- config.font = wezterm.font("Sophistry Sans Roguelike")
 -- config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
 
 -- 'CaskaydiaCove Nerd Font Mono'
-config.font_size = 14
+config.font_size = 15
 config.window_background_opacity = 0.8
 
 -- For example, changing the color scheme:

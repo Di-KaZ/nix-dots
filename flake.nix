@@ -5,7 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "github:hyprwm/Hyprland";
     android-nixpkgs.url = "github:tadfisher/android-nixpkgs/stable";
     android-nixpkgs.inputs.nixpkgs.follows = "nixpkgs";
     wezterm.url = "github:wez/wezterm?dir=nix";
@@ -13,9 +12,14 @@
     atuin.url = "github:atuinsh/atuin";
     nix-colors.url = "github:misterio77/nix-colors";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+       url = "github:hyprwm/hyprland-plugins";
+       inputs.hyprland.follows = "hyprland";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, android-nixpkgs, atuin, nix-colors, neovim-nightly, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, android-nixpkgs, atuin, nix-colors, neovim-nightly, hyprland-plugins, ... }:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -23,7 +27,7 @@
       overlays = [
         (import ./pkgs/wayfire/overlay.nix { inherit pkgs; })
         inputs.neovim-nightly.overlay
-      ];
+		];
     in
     {
       nixosConfigurations = {

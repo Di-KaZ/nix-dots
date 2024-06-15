@@ -7,7 +7,6 @@ import Player from './widgets/player';
 import VolumeIcon from './widgets/volume_icon';
 import Brightness from './widgets/brightness';
 import Workspaces from './widgets/workspaces';
-import ScreeCorner from './widgets/screen_corner';
 
 const input = `./style.scss`
 
@@ -25,12 +24,12 @@ try {
 
 const Bar = (monitor: number) => Widget.Window({
 	name: `bar-${monitor}`,
-	anchor: ['left', 'top', 'right'],
+	anchor: ['left', 'bottom', 'right'],
 	exclusivity: "exclusive",
 	margins: [
-		10, // top
+		0, // top
 		200, // right
-		20, // bottom
+		10, // bottom
 		200 // left
 	],
 	child: Widget.CenterBox({
@@ -38,7 +37,7 @@ const Bar = (monitor: number) => Widget.Window({
 		startWidget: Widget.Box({
 			children: [
 				Widget.Box({ widthRequest: 10 }),
-				Workspaces()
+				// Workspaces()
 			],
 		}),
 		centerWidget: Widget.Box({
@@ -60,7 +59,6 @@ const Bar = (monitor: number) => Widget.Window({
 				VolumeIcon(),
 				Widget.Box({ widthRequest: 20 }),
 				Battery(),
-				Widget.Box({ widthRequest: 20 }),
 				Tray(),
 				Widget.Box({ widthRequest: 20 }),
 			],

@@ -11,6 +11,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
+ nixpkgs.config.permittedInsecurePackages = [
+		"openssl-1.1.1w"
+ ];
+
+  networking.firewall.enable = false;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,13 +31,32 @@
   programs.zsh.enable = true;
   programs.nix-ld = {
     enable = true;
-	libraries = with pkgs; [ libgit2 prisma-engines ];
+	libraries = with pkgs; [
+		libgit2 
+		prisma-engines 
+		unixODBC
+		openssl_1_1
+	];
   };
 
   virtualisation.docker.enable = true;
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+
+  environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ msodbcsql17 psql ]; 
+
+  environment.systemPackages = with pkgs; [
+		libsForQt5.qt5.qtquickcontrols2
+		libsForQt5.qt5.qtgraphicaleffects
+		unixODBC
+		openssl_1_1
+  ];
+
+  # services.displayManager.sddm = {
+  # enable = true;
+  # wayland.enable = true;
+  # theme = "${import ./system/sddm/theme.nix { inherit pkgs; } }";
+  # };
   services.upower.enable = true;
 
   time.timeZone = "Europe/Paris";
